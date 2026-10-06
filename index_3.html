@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sara's oefenomgeving</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f1117">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+  :root {
+    --bg: #0f1117;
+    --card-bg: rgba(15, 17, 23, 0.82);
+    --accent: #a99cff;
+    --text: #ffffff;
+    --muted: #d4d6de;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); }
+  body {
+    background: transparent;
+    color: var(--text);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    position: relative;
+  }
+  /* Laag 1: dezelfde foto, vergroot en vervaagd, vult het volledige scherm */
+  html::before {
+    content: "";
+    position: fixed;
+    inset: -40px;
+    z-index: -3;
+    background: url("achtergrond.jpg") center center / cover no-repeat;
+    filter: blur(28px) brightness(0.85);
+  }
+  /* Laag 2: de foto zelf, volledig zichtbaar (niet bijgesneden) en gecentreerd */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: url("achtergrond.jpg") center center / contain no-repeat;
+  }
+  /* Donkere overlay voor contrast tussen tekst en afbeelding */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 10, 16, 0.70) 0%,
+      rgba(8, 10, 16, 0.55) 45%,
+      rgba(8, 10, 16, 0.75) 100%
+    );
+  }
+  header {
+    text-align: center;
+    padding: 60px 20px 40px;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  }
+  header p {
+    color: var(--text);
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+  }
+  .contact {
+    margin-top: 20px;
+  }
+  .contact a {
+    color: var(--accent);
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  .contact a:hover {
+    text-decoration: underline;
+  }
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: var(--card-bg);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .card:hover,
+  .card:focus-visible {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border-color: var(--accent);
+    outline: none;
+  }
+  .card-thumb {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, #6c5ce7, #341f97);
+  }
+  .card-body {
+    padding: 16px 18px;
+  }
+  .card-body h3 {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
+  .card-body p {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card { transition: none; }
+    .card:hover, .card:focus-visible { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Sara's oefenomgeving</h1>
+  <p>Toetsen en oefenvragen.</p>
+
+</header>
+
+<main>
+  <div class="grid">
+
+    <a class="card" href="https://pvtwuyver.github.io/wiskunde1/">
+      <img class="card-thumb" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fpvtwuyver.github.io%2Fwiskunde1%2F" alt="Toets thumbnail">
+      <div class="card-body">
+        <h3>Wiskunde</h3>
+        <p>Rekenen met letters Getal en Ruimte Hoofdstuk 1</p>
+      </div>
+    </a>
+
+    <a class="card" href="https://pvtwuyver.github.io/404/">
+      <img class="card-thumb" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Ftests.quest.nl%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Ftest_full%2Fpublic%2F2023-02%2Fgettyimages-107758168.jpg%3Fitok%3D4Xvz9c8D" alt="NASK thumbnail">
+      <div class="card-body">
+        <h3>NASK</h3>
+        <p>Hoofdstuk 1.</p>
+      </div>
+    </a>
+
+  <!--  
+    <a class="card" href="project5.html">
+      <img class="card-thumb" src="thumbnails/project3.png" alt="Project Three thumbnail">
+      <div class="card-body">
+        <h3>Project </h3>
+        <p>Short description of what this project does.</p>
+      </div>
+    </a>
+   --> 
+  </div>
+</main>
+
+<footer>
+  <p>a 2026 Talmastraat production.</p>
+</footer>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js');
+  });
+}
+</script>
+
+</body>
+</html>
